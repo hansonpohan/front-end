@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>函式的定義</title>
+    <link rel="icon" href="./favicon.ico" />
+    <link href="stylesheets/jquery-ui/base/jquery-ui.min.css" rel="stylesheet" />
+    <style>
+        .main-box {
+            margin: 50px auto;
+            width: 400px;
+            height: 200px;
+            padding: 50px;
+            box-shadow: 5px 5px 10px #999;
+            border: 1px solid #fff;
+            text-align: center;
+        }
+    </style>
+    <script src="javascripts/jquery-3.6.0.min.js"></script>
+    <script src="javascripts/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#tabs").tabs();
+        });
+    </script>
+</head>
+<body>
+    <div id="tabs">
+        <ul>
+            <li><a href="#p1">基本型函式</a></li>
+            <li><a href="#p2">函式字面值</a></li>
+            <li><a href="#p3">箭頭函式</a></li>
+        </ul>
+        <div id="p1">
+            <div class="main-box">
+                <h3>
+                    <script>
+                        var s = "";
+                        function greeting(message) {
+                            s += `${message}<br/>`;
+                            //return undefined;沒預設值,回傳undefined
+                        }
+                        console.log(greeting("歡迎光臨..."));
+                        greeting("Welcome to JavaScript...");
+                        document.write(`${s}`);
+                    </script>
+                </h3>
+            </div>
+        </div>
+        <div id="p2">
+            <div class="main-box">
+                <h3>
+                    <script>
+                        var s = "";
+                        var f1 = function (message) { s += `${message}<br/>` };
+                        f1("歡迎光臨!!!");
+                        (function (message) { s += `${message}<br/>` })("Welcome to JavaScript!!!");
+                        document.write(`${s}`);
+                    </script>
+                </h3>
+            </div>
+        </div>
+        <div id="p3">
+            <div class="main-box">
+                <h3>
+                    <script>
+                        var s = "";
+                        var f1 = (message) => { return `${message}<br/>`; };
+                        var f2 = message => `${message}<br/>` ;
+                        s += f1("歡迎光臨");
+                        s += f2("Welcome to JavaScript");
+                        document.write(`${s}`);
+                    </script>
+                </h3>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

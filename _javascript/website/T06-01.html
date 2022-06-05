@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>時間與計時器</title>
+    <link rel="icon" href="./favicon.ico" />
+    <link href="stylesheets/jquery-ui/base/jquery-ui.min.css" rel="stylesheet" />
+    <style>
+        .main-box {
+            margin: 50px auto;
+            width: 400px;
+            height: 200px;
+            padding: 50px;
+            box-shadow: 5px 5px 10px #999;
+            border: 1px solid #fff;
+            text-align: center;
+        }
+    </style>
+    <script src="javascripts/jquery-3.6.0.min.js"></script>
+    <script src="javascripts/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#tabs").tabs();
+        });
+    </script>
+</head>
+<body>
+    <div id="tabs">
+        <ul>
+            <li><a href="#p1">Date物件</a></li>
+            <li><a href="#p2">setTimeout用法</a></li>
+            <li><a href="#p3">setInterval用法</a></li>
+        </ul>
+        <div id="p1">
+            <div class="main-box">
+                <h3>
+                    <script>
+                        var now = new Date();
+                        var s = `${now.getFullYear()}/${now.getMonth() + 1}/${now.getDate()} ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+                        document.write(`${s}`);
+                    </script>
+                </h3>
+            </div>
+        </div>
+        <div id="p2">
+            <div class="main-box">
+                <h3>
+                    <span id="span1"></span>
+                    <script>
+                        function formatDigit(digit) {
+                            return ("0" + digit).slice(-2);
+                        }
+                        function displayNowTime() {
+                            var now = new Date();
+                            var y = now.getFullYear(), m = formatDigit(now.getMonth() + 1), d = formatDigit(now.getDate()),
+                                h = formatDigit(now.getHours()), M = formatDigit(now.getMinutes()), s = formatDigit(now.getSeconds()); 
+                            var s = `${y}/${m}/${d} ${h}:${M}:${s}`;
+                            document.getElementById("span1").innerHTML = s;
+                            window.setTimeout(function () { displayNowTime(); }, 1000);
+                        }
+                        window.setTimeout(  function () {   displayNowTime();  }, 0);
+                    </script>
+                </h3>
+            </div>
+        </div>
+        <div id="p3">
+            <div class="main-box">
+                <h3>
+                    <span id="span2"></span>
+                    <script>
+                        function displayCurrentTime() {
+                            var now = new Date();
+                            var y = now.getFullYear(), m = formatDigit(now.getMonth() + 1), d = formatDigit(now.getDate()),
+                                h = formatDigit(now.getHours()), M = formatDigit(now.getMinutes()), s = formatDigit(now.getSeconds());
+                            var s = `${y}/${m}/${d} ${h}:${M}:${s}`;
+                            document.getElementById("span2").innerHTML = s;
+                        }
+                        window.setInterval(function () { displayCurrentTime(); }, 1000);
+                    </script>
+                </h3>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

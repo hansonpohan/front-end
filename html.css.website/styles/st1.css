@@ -1,0 +1,33 @@
+h2.st1 {
+    color:green;
+    text-decoration: underline;
+}
+.st2 {
+    color:	#5A5AAD;
+    font-style:italic;
+}
+.col1 {
+    color:gray;
+}
+.col2 {
+    color:brown;
+}
+.size1 {
+    font-size:2em;
+}
+.trans {
+    text-transform: capitalize;
+}
+.under1 {
+    text-decoration: underline;
+}
+.colH1 {
+    color:purple;
+}
+#col2H1 {
+    color:pink;
+}
+p {
+    color:gray;
+    font-size:2em;
+}

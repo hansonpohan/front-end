@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Array類型</title>
+    <link rel="icon" href="./favicon.ico" />
+    <link href="stylesheets/jquery-ui/base/jquery-ui.min.css" rel="stylesheet" />
+    <style>
+        .main-box {
+            margin: 50px auto;
+            width: 400px;
+            height: 200px;
+            padding: 50px;
+            box-shadow: 5px 5px 10px #999;
+            border: 1px solid #fff;
+            text-align: center;
+        }
+    </style>
+    <script src="javascripts/jquery-3.6.0.min.js"></script>
+    <script src="javascripts/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#tabs").tabs();
+        });
+    </script>
+</head>
+<body>
+    <div id="tabs">
+        <ul>
+            <li><a href="#p1">陣列導論</a></li>
+            <li><a href="#p2">Array Literal</a></li>
+            <li><a href="#p3">Array常用的方法</a></li>
+        </ul>
+        <div id="p1">
+            <div class="main-box">
+                <h3>
+                    <script>
+                        var arr1 = new Array("a", "b", "c");
+                        var arr2 = new Array(3);
+                        arr2[0] = 1
+                        arr2[1] = 2;
+                        arr2[2] = 3;
+                        document.write(`arr1=${arr1.toString()}<hr/>`);                        
+                        document.write(`arr2=${arr2.toString()}<hr />`);
+                        //以元素之索引存取特定位置之陣列元素
+                        console.log(`arr1[0]=${arr1[0]}`); //print: arr1[0]=1
+                        //擷取陣列的元素個數
+                        console.log(`arr1元素個數=${arr1.length}`); //print: arr1元素個數=3
+                        //巡覽陣列的每個元素
+                        var s = '';
+                        for (let i = 0; i < arr1.length; i++) {
+                            s += arr1[i] + '*';
+                        }
+                        console.log(`arr1的元素計有: ${s}`); //arr1的元素計有: 1*2*3*
+                        s = '';
+                        for (let i in arr1) {
+                            s += arr1[i] + '#';
+                        }
+                        console.log(`arr1的元素計有: ${s}`); //arr1的元素計有: 1#2#3#
+                    </script>
+                </h3>
+            </div>
+        </div>
+        <div id="p2">
+            <div class="main-box">
+                <h3>
+                    <script>
+                        var arr1 = [1, 2, 3];
+                        var arr2 = ["a", "b", "c", 1, 2, 3];
+                        var arr3 = [{name:'mary',age:25}, {name:'kitty',age:18}];
+                        var arr4 = [];
+                        document.write(`arr1=${JSON.stringify(arr1)}<hr/>arr2=${JSON.stringify(arr2)}<hr/>
+                                        arr3=${JSON.stringify(arr3)}<hr/>arr4=${JSON.stringify(arr4)}<hr/>`);
+                    </script>
+                </h3>
+            </div>
+        </div>
+        <div id="p3">
+            <div class="main-box">
+                <h3>
+                    <script>
+                        var nums = [1, 2, 3];
+                        document.write(`nums=${JSON.stringify(nums)}<hr/>`);
+                        nums.push(4);
+                        document.write(`nums.push(4)之後=>${JSON.stringify(nums)}<hr/>`);                       
+                        nums.splice(0, 1, 7, 8, 9);
+                        document.write(`nums.splice(0, 1, 7, 8, 9)之後=>${JSON.stringify(nums)}<hr/>`);
+                        var nums2 = nums.slice(0,2);
+                        document.write(`nums.slice(0,2)傳回新array=>${JSON.stringify(nums2)}<hr/>`);
+                        var s = nums.join("-");
+                        document.write(`nums.join("-")傳回字串=>${s}<hr/>`);                        
+                    </script>
+                </h3>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>請求與回應標頭檢視</title>
+    <style>
+        .main-box {
+            margin: 50px auto;
+            width: 400px;
+            height: 150px;
+            padding: 50px;
+            box-shadow: 5px 5px 10px #999;
+            border: 1px solid #fff;
+            text-align: center;
+            color: blue;
+            font-size: 20px;
+        }
+        input {            
+            color: blue;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-box">
+        <form action="WebServer1.aspx" method="get">
+            <label>
+                姓名 <input type="text" id="text1" name="username" size="20" value="小倩" />
+                <!-- query string   username=>query parameter-->
+            </label>
+            <input type="submit" value="送出" />
+        </form>
+    </div>
+</body>
+</html>
+

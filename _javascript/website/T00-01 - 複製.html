@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>事件處練習</title>
+    <style>
+        .main-box {
+            margin: 50px auto;
+            width: 400px;
+            height: 200px;
+            padding: 50px;
+            box-shadow: 5px 5px 10px #999;
+            border: 1px solid #fff;
+            text-align: center;
+            font-size: 1.3em;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-box">
+        <div id="div3">
+            <h3>簡易四則計算器</h3>
+            <input type="text" size="10" id="number1" value="20" />
+            <input type="text" id="op" value="+" style="width:20px; text-align:center;" />
+            <input type="text" size="10" id="number2" value="10" />
+            <button onclick="calculate()">=</button>
+            <input type="text" size="10" id="result" />
+        </div>
+    </div>
+    <div>
+        <script>
+            for (let i = 1; i <= 10; i++)
+                document.write("Hello world <hr/>");
+        </script>
+    </div>
+
+    <script>
+        var var1 = 100;
+        console.log("var1", (typeof var1) + "abc") // typeof var1==> numberabc
+        console.log("var1", typeof (var1 + "abc")) // typeof var1==> string
+
+        var _v1 = 100;
+        var _v2 = 123.45;
+        //var v3 = v1 + 20 - v2 * 5 / 3 + "px";
+        var _v3 = (((_v1 + 20) - ((_v2 * 5) / 3)) + "px");
+        console.log(_v3);
+
+
+
+        var n1 = 100;
+        console.log(n1++); // 100
+        //後遞增
+        //(1)先取運算式之值(=目前變數值)
+        //(2)變數在遞增一
+        console.log(n1); // 101
+
+        var n1 = 100;
+        console.log(++n1); // 101
+        //先遞增
+        //(1)變數先遞增一
+        //(2)再取運算式之值(=目前變數值)
+
+        console.log(n1); // 101
+
+
+        var var1 = 100;
+        console.log("var1", typeof var1) // typeof var1==> number
+        var var1 = "100";
+        console.log("var1", typeof var1) // typeof var1==> string
+        
+
+        let s1 = "hello";
+        let b1 = true;
+
+
+        var v1 = 10; //可以重複宣告 var沒有區域變數//global variable 全域變數
+        let v3 = 100;
+
+        const c1 = 10;
+        //c1 = 20; //Uncaught TypeError: Assignment to constant variable. const不可以指派兩次
+                                                                                             
+
+        //let v3 = 10;   let有區域 不可以重複宣告
+
+        switch (v1) {
+            case 100:
+                console.log("aaa")
+                break;
+            case 200:
+                console.log("bbb")
+                break;
+            default:
+                console.log("ccc")
+                break;
+        }
+
+        function calculate() {
+            window.vv = 100;
+            console.log("vv=", vv);
+
+            let v11 = 111;
+            {
+                let v11 = 100;
+                //var v11 = 100;
+                console.log(v11);
+            }
+            console.log("v1=", v11);//Test00-01.html:53 Uncaught ReferenceError: v11 is not defined
+            console.log("v1=" + v1);
+            console.log("v1=%d %s", v1, "Hello")  //%d 整數  %f浮點數  %s字串
+            //ES2015  template literal 樣板字面值
+            console.log(`v1=${v1}`); //string interpolation字串內插
+
+
+            var s1 = document.getElementById('number1').value;
+            var s2 = document.getElementById('number2').value;
+
+            var n1 = window.parseInt(s1);
+            var n2 = parseInt(s2);
+
+            var op = document.getElementById("op").value;
+            var n3; //undefined  //Local variable區域變數
+            switch (op) {
+                case "+":
+                    n3 = n1 + n2;
+                    break;
+                case "-":
+                    n3 = n1 - n2;
+                    break;
+                case "*":
+                case "x":
+                case "X":
+                    n3 = n1 * n2;
+                    break;
+                case "/":
+                    n3 = n1 / n2;
+                    break;
+                default:
+                    n3 = "運算子無效!";
+            }
+            document.getElementById('result').value = n3;
+        }
+
+    </script>
+</body>
+</html>
+

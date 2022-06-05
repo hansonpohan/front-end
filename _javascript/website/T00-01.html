@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>事件處理</title>
+    <style>
+        .main-box {
+            margin: 50px auto;
+            width: 400px;
+            height: 200px;
+            padding: 50px;
+            box-shadow: 5px 5px 10px #999;
+            border: 1px solid #fff;
+            text-align: center;
+            font-size: 1.3em;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-box">
+        <div id="div3">
+            <h3>簡易四則計算器</h3>
+            <input type="text" size="10" id="number1" value="20" />
+            <input type="text" id="op" value="+" style="width:20px; text-align:center;" />
+            <input type="text" size="10" id="number2" value="10" />
+            <button onclick="calculate()">=</button>
+                           <!-- 2. 函式呼叫(function call)  ()呼叫-->
+            <input type="text" size="10" id="result" />
+        </div>
+        <script>
+            //1. 定義 function
+            function calculate() {
+                var s1 = document.getElementById('number1').value;
+                var s2 = document.getElementById('number2').value;
+                var n1 = parseInt(s1);
+                var n2 = parseInt(s2);
+                var op = document.getElementById('op').value;
+                var n3;
+                switch (op) {
+                    case '+':
+                        n3 = n1 + n2;
+                        break;
+                    case '-':
+                        n3 = n1 - n2;
+                        break;
+                    case '*':
+                    case 'x':
+                        n3 = n1 * n2;
+                        break;
+                    case '/':
+                        n3 = n1 / n2;
+						break;
+                    default:
+                        n3 = '運算符號無效!';
+                }
+                document.getElementById('result').value = n3;
+            }
+        </script>
+    </div>
+</body>
+</html>
+

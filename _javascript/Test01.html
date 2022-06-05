@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .main-box {
+            margin: 50px auto;
+            width: 400px;
+            height: 200px;
+            padding: 50px;
+            box-shadow: 5px 5px 10px #999;
+            border: 1px solid #fff;
+            text-align: center;
+            font-size: 1.3em;
+        }
+    </style>
+    <script>       
+        function f1() {
+            let sex = document.getElementById("sex").value;            
+            //let message = (sex == '男') ? "先生您好" : "女士您好";
+
+            //let message = "女士您好!";
+            //if (sex == '男'|| sex=='男士'||sex.toUpperCase()=='MAN') {
+            //    message = "先生您好!";
+            //}
+
+            let message;
+            if (sex == '男') //{
+                message = "先生您好...";
+            //}
+            else if (sex == '女')// {
+                message = "女士您好...";
+           // }
+            else if (sex == '中性') //{
+                message = "您好...";
+           // }
+            else
+                message = "";
+
+            document.getElementById("message").value = message;
+        }
+
+        function f2() {
+            let n1 = parseInt(document.getElementById("n1").value);
+            let n2 = parseInt(document.getElementById("n2").value);
+
+            if (n1 > n2) {
+                let tmp = n1;
+                n1 = n2;
+                n2 = tmp;
+            }
+
+            let total = 0, i = n1;
+            //for (let i = n1; i <= n2; i++) {
+            //    total = total + i;
+            //}
+
+            while (i <= n2) //{
+                total = total + i++;
+                //i++;
+            //}
+            //document.getElementById("sum").value = total;
+
+            var tot = 0, j=n1;
+            do //{
+                tot += j++;
+                //j++;
+            //}
+            while (j <= n2);
+            document.getElementById("sum").value = tot;            
+        }
+
+        function f3() {
+            //local function
+            function getTotal(n1, n2, cb) {
+                if (n1 > n2) {
+                    let tmp = n1;
+                    n1 = n2;
+                    n2 = tmp;
+                }
+                let total = 0;
+                for (let i = n1; i <= n2; i++) {
+                    total = total + i;
+                }
+                cb(total);
+            }
+
+            getTotal(
+                parseInt(document.getElementById('num1').value),
+                parseInt(document.getElementById('num2').value),
+                //function (tot) {
+                //    document.getElementById('total').value = tot;
+                //}
+                //(tot) => { document.getElementById('total').value = tot; }
+                tot => document.getElementById('total').value = tot
+            );
+
+        }
+
+    </script>
+</head>
+<body>
+    <div class="main-box">
+        <div>
+            <input type="text" id="num1" size="3" value="1" /> ~
+            <input type="text" id="num2" size="3" value="10" />
+            <button onclick="f3()">累加值為</button>
+            <input type="text" id="total" disabled size="20" />
+        </div>
+        <hr />
+        <div>
+            <input type="text" id="n1" size="3" value="1" /> ~
+            <input type="text" id="n2" size="3" value="10" />
+            <button onclick="f2()">累加值為</button>
+            <input type="text" id="sum" disabled size="20" />
+        </div>
+        <hr />
+        <div>
+            <label for="sex">性別</label>
+            <input type="text" id="sex" oninput="f1()" size="3" />
+            <input type="text" id="message" disabled size="20" />
+        </div>
+        <hr />
+        <div id="div3">
+            <h3>簡易四則計算器</h3>
+            <input type="text" size="10" id="number1" value="20" />
+            <input type="text" id="op" value="+" style="width:20px; text-align:center;" />
+            <input type="text" size="10" id="number2" value="10" />
+            <button onclick="calculate()">=</button>
+            <input type="text" size="10" id="result" />
+        </div>
+
+    </div>
+
+    <div>
+        <script>
+            for (let i = 1; i <= 10; i++)
+                document.write("Hello world <hr/>");
+        </script>
+    </div>
+
+    <script>
+        var var1 = 100;
+        console.log("var1", typeof var1 + "abc") //typeof var1 ==> numberabc
+        console.log("var1", typeof (var1 + "abc") ) //typeof var1 ==> string
+
+        var _v1 = 100;
+        var _v2 = 123.45;
+        //var _v3 = v1 + 20 - v2 * 5 / 3 + "px";
+        var _v3 = (((_v1 + 20) - ((_v2 * 5) / 3)) + "px");
+        console.log(_v3)
+
+
+        var n1 = 100;
+        console.log(n1++); //100 
+        //後遞增
+        //(1)先取運算式之值(=目前的變數值)
+        //(2)變數再遞增一
+        console.log(n1); //101 
+
+        var n1 = 100;
+        console.log(++n1); //101
+        //先遞增
+        //(1)變數遞增一
+        //(2)再取運算式之值(=目前的變數值)
+       
+        console.log(n1); //101 
+
+
+        var var1 = 100;
+        console.log("var1", typeof var1) //typeof var1==> number
+        var var1 = "100";
+        console.log("var1", typeof var1) //typeof var1==> string
+
+        let s1 = "hello";
+        let b1 = true;
+
+      
+        var v1 = 10, v2; //global varibale 全域變數
+
+        let v3 = 100;
+        
+        const c1 = 10;
+        //c1 = 20; //Uncaught TypeError: Assignment to constant variable.
+
+
+
+        //let v3 = 200; let 不可重複宣告
+
+        var v1;
+        switch (v1) {
+            case 100:
+                console.log("aaa")
+                break;
+            case 200:
+                console.log("bbb")
+            default:
+                console.log("ccc")
+        }
+
+        function calculate() {
+            window.vv = 100;
+            console.log("vv=", vv)
+
+            let v11 = 111;
+            {
+                let v11 = 100;
+                //var v11 = 100;
+                console.log(v11)
+            }
+            console.log("v1=", v11) //Test01.html:53 Uncaught ReferenceError: v11 is not defined
+            console.log("v1=" + v1)
+            console.log("v1=%d %s", v1, "Hello")  //%d 整數,   %f 浮點數,   %s 字串
+            //ES2015 template literal 樣板字面值
+            console.log(`v1=${v1}`); //string interpolation字串內插
+
+            var s1 = document.getElementById("number1").value;
+            var s2 = document.getElementById("number2").value;
+
+            var n1 = window.parseInt(s1)
+            var n2 = parseInt(s2)
+
+            var op = document.getElementById("op").value;
+            var n3; //undefined  //local variable區域變數
+            switch (op) {
+                case "+":
+                    n3 = n1 + n2;
+                    break;
+                case "-":
+                    n3 = n1 - n2;
+                    break;
+                case "*":
+                case "x":
+                case "X":
+                    n3 = n1 * n2;
+                    break;
+                case "/":
+                    n3 = n1 / n2;
+                    break;
+                default:
+                    n3 = "運算子無效";
+            }
+
+            document.getElementById("result").value = n3;
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>物件建立與存取</title>
+    <link rel="icon" href="./favicon.ico" />
+    <link href="stylesheets/jquery-ui/base/jquery-ui.min.css" rel="stylesheet" />
+    <style>
+        .main-box {
+            margin: 50px auto;
+            width: 500px;
+            height: 200px;
+            padding: 50px;
+            box-shadow: 5px 5px 10px #999;
+            border: 1px solid #fff;
+            text-align: center;
+        }
+    </style>
+    <script src="javascripts/jquery-3.6.0.min.js"></script>
+    <script src="javascripts/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#tabs").tabs();
+        });
+    </script>
+</head>
+<body>
+    <div id="tabs">
+        <ul>
+            <li><a href="#p1">物件導論</a></li>
+            <li><a href="#p2">Object Literal</a></li>
+            <li><a href="#p3">for/in迴圈</a></li>
+        </ul>
+        <div id="p1">
+            <div class="main-box">
+                <h3>
+                    <script>
+                        //A. 建立特定類別(class)的物件
+                        //定義建構子函式(constructor)
+                        function Dog(name, age) {
+                            //定義屬性
+                            this.name = name;
+                            this.age = age;
+                            //定義方法
+                            this.cry = function () { return `${this.name}汪汪汪...`; }
+                        }
+                        //建立物件實體
+                        var dog1 = new Dog('小黑', 3);
+                        var dog2 = new Dog('小白', 5);
+                        //存取物件的屬性與方法
+                        document.write(`dog1.name=${dog1.name} dog1.age=${dog1.age} dog1.cry()=${dog1.cry()}<br/>`);
+                        document.write(`dog2.name=${dog2.name} dog2.age=${dog2.age} dog2.cry()=${dog2.cry()}<hr/>`);
+
+                        //------------------------------------------------//
+                        //B. 建立Object類別(class)的物件
+                        //建立物件實體
+                        var o1 = new Object();
+                        //添加物件實體的屬性與方法
+                        o1.name = '小倩';
+                        o1.age = 18;
+                        o1.sing = function () {
+                           return `${this.name}啦啦啦...`;
+                        }; 
+                        //建立物件實體
+                        var o2 = new Object();
+                        //添加物件實體的屬性與方法
+                        o2.name = '采臣';
+                        o2.age = 20;
+                        o2.sing = function () {
+                            return `${this.name}啦啦啦...`;
+                        };
+                        //存取物件的屬性與方法  
+                        document.write(`o1.name=${o1.name} o1.age=${o1.age} o1.cry()=${o1.sing()}<br/>`);
+                        document.write(`o2.name=${o2.name} o2.age=${o2.age} o2.cry()=${o2.sing()}<hr/>`);
+                    </script>
+                </h3>
+            </div>
+        </div>
+        <div id="p2">
+            <div class="main-box">
+                <h3>
+                    <script>
+                        var obj1 = { name: "mary", age: 25 };
+                        var obj2 = { "name": 'mary', "age": 25 };
+                        var obj3 = { 'name': "mary", 'age': 25 };
+                        document.write(`obj1=${JSON.stringify(obj1)}<hr/>obj2=${JSON.stringify(obj2)}<hr/>obj3=${JSON.stringify(obj3)}<hr/>`);
+                    </script>
+                </h3>
+            </div>
+        </div>
+        <div id="p3">
+            <div class="main-box">
+                <h3>
+                    <script>
+                        var s = "";
+                        var object = { name: "peter", age: 35 }
+                        for (let prop in object) {
+                            s += `${prop}=${object[prop]}\t`;
+                        }
+                        document.write(`${s}`);
+                    </script>
+                </h3>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

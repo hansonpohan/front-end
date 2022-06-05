@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        var a1 = [1, 2, 3];
+        console.log(a1); //a1.valueOf()
+        console.log(a1.toString());//1,2,3
+        console.log(JSON.stringify(a1))//[1,2,3]
+        //a1.forEach(function(value,index){ } )
+        a1.push(4, 5);//push()方法會添加一個或多個元素至陣列的 末端 ，並且回傳陣列的新長度。
+        a1.pop();
+        console.log(`(1) a1=${a1}`);//(1) a1=1,2,3,4
+        console.log(`a1.join("-")=${a1.join("-")}`);
+        a1.splice(0, 1, 77, 88, 99);//(砍第0個元素,砍一個,插入,插入,插入)
+        console.log(`(2) a1=${a1}`);//(2) a1=77,88,99,2,3,4
+
+        function myEventHandler(e) {
+            let div1 = document.getElementById("div1");
+            div1.innerHTML += `<div>${e.type}...</div>`;
+
+            if (e.type == "mouseover") {
+                console.log(`onmouseover事件發生了...`);
+            }
+            else if (e.type == "mouseout") {
+                console.log(`onmouseout事件發生了***`);
+            }
+            else 
+                console.log(`click事件發生了***`);
+        }
+        function myEventHandler2(e) {
+            let div2 = document.getElementById("div2");
+            div2.innerHTML += `<div>${e.type} code=${e.code} key=${e.key}...</div>`;            
+        }
+
+        function init() {
+            let ta2 = document.getElementById("ta2");
+
+            //let eh = function () { e.type };
+
+            ta2.addEventListener("keydown", myEventHandler2)
+            ta2.addEventListener("keypress", myEventHandler2)
+            ta2.addEventListener("keyup", myEventHandler2)
+        }
+        //< body onload = "init()" >
+        window.onload = function () {
+            let ta2 = document.getElementById("ta2");
+            ta2.addEventListener("keydown", myEventHandler2)
+            ta2.addEventListener("keypress", myEventHandler2)
+            ta2.addEventListener("keyup", myEventHandler2)
+        }
+
+    </script>
+</head>
+<!--<body onload="init()">-->
+<body>
+    <h1>Hello world2</h1>
+    <div>
+        <textarea onmouseover="myEventHandler(event)"
+                  onmouseout="myEventHandler(event)"
+                  onclick="myEventHandler(event)"
+                  cols="10" rows="3"></textarea>
+        <div id="div1"></div>
+        <hr />
+        <!--<textarea onkeydown="myEventHandler2(event)"
+                  onkeypress="myEventHandler2(event)"
+                  onkeyup="myEventHandler2(event)"
+                  cols="10" rows="3"></textarea>-->
+        <textarea id="ta2" cols="10" rows="3"></textarea>
+        <div id="div2"></div>
+    </div>
+</body>
+</html>

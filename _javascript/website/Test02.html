@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        //let a1 = new Array(10, 15, 20);
+        let a1 = [10, 15, 20];
+        let total = 0;
+        //迭代(遍歷)陣列 iterate over the array
+        for (let i = 0; i < a1.length; i++) {
+            total += a1[i];
+        }
+        console.log(`total=${total}`);
+
+        total = 0;
+        for (idx in a1) {//for index in array  in是idx
+            total += a1[idx];
+        }
+        console.log(`total=${total}`);
+
+        //ES6(2015)
+        total = 0;
+        for (value of a1) {//for index of array  of是value
+            total += value;
+        }
+        console.log(`total=${total}`);
+
+        total = 0;
+        a1.forEach(function (value, index) {
+            total += value;
+        });
+        console.log(`total=${total}`);
+        //箭頭函式
+        total = 0;
+        a1.forEach((value, index) => total += value);
+        console.log(`total=${total}`);
+
+
+        let e = {
+            employeeid: "A001",
+            firstname: "Nancy",
+            birthday: new Date(1980, 4, 10),
+            sing: function () {
+                //alert(`${this.firstname}(${this.birthday})啦啦啦...`)
+            }
+        };
+        //e.sing();
+        console.log(e.toString());//[object Object]
+        let jsonStr = JSON.stringify(e);
+        console.log(jsonStr);
+        //{"employeeid": "A001", "firstname": "Nancy",
+        //"birthday": "1980-05-09T16:00:00.000Z"}
+        let obj = JSON.parse(jsonStr);
+        //alert(obj.firstname);
+
+        var emp = new Object();
+        emp.employeeid = 'A001';
+        emp.firstname = 'Nancy';
+        emp.birthday = new Date(1980, 4, 10, 10, 20, 30)
+        emp.sing = function () {
+            //alert(`${this.firstname}(${this.birthday.toString()})啦啦啦...`)
+        }
+        emp.sing();
+        
+        function cat(name,age) {
+            this.name = name;
+            this.age = age;
+            this.cry = function () {
+                //alert(`${this.name}喵喵喵...`);
+                //alert():message dialog訊息對話框
+            }
+        }
+        var cat1 = new cat("Kitty", 3);
+        var cat2 = new cat("小倩", 5);
+        
+        cat2.cry();
+        cat1.cry();
+
+        function f3a(n1) {
+            return n1 ** 2;
+        }
+        let f3b = function (n1) {
+            return n1 ** 2;
+        }
+        //let f3c = (n1) => { return n1 ** 2; };
+        //參數只有一個小括號可以省略,body只有一行statement大括號可以省略,分號要拿掉
+        let f3c = n1 => n1 ** 2;//return可以省略
+
+        console.log(f3a(3));
+        console.log(f3b(3));
+        console.log(f3c(3));
+
+
+        (function (message) {
+            console.log(message);
+        })('Hello world');
+
+        //function()沒有命名不能算一個statement,沒有命名的function()要存放在一個變數裡面
+        //同名function後面會蓋掉前面
+        //function f1() {
+
+        //}
+        
+
+        function f2(p1) {//p1是 f2的callback function要自己提供
+            //做複雜的運算
+            //result: 100
+            let result = 100;
+            p1(result);
+        }
+        var f1 = function (num) {
+            console.log(`result=${num}`);
+        }
+        //p1參考到f1所指向的物件,結束返回呼叫者
+        f2(f1);
+        //arrow function
+        //f2(num => console.log(`result=${num}`));
+        f2((num) => { console.log(`result=${num}`); });
+            
+        //function literal
+        f2(function (res){
+            console.log(`res=${res}`);
+        })
+
+
+        var v1 = 100;
+        var v2 = 123.45;
+        console.log(v1 > v2 && v1++ != 100); //false
+        console.log((v1 > v2) && ((v1++) != 100));
+        console.log(`v1=${v1}`); //v1=100
+        //&&  short-circuit evaluation 短路運算
+
+
+        var v1 = 100;
+        var v2 = 123.45;
+        console.log(v1 < v2 && v1++ != 100); //false
+        console.log(`v1=${v1}`); //v1=101
+        console.log((v1 < v2) && ((v1++) != 100));
+        console.log((true) && ((100) != 100));
+        console.log((true) && (false)); //false
+        
+
+        var v1 = 100;
+        var v2 = 123.45;
+        document.write(v1 > v2 < 50); //true
+        console.log(((v1 > v2) < 50)); //true
+        console.log((false) < 50);//true
+        console.log((0) < 50);//true
+
+        function init() {
+            var s1 = document.getElementById("h1-1").innerHTML;
+            console.log(`s1=${s1}`);
+        }
+        
+    </script>
+</head>
+<body onload="init()">
+    <h1 id="h1-1">Hello world</h1>
+    <script>
+        var s1 = document.getElementById("h1-1").innerHTML;
+        console.log(`s1=${s1}`);
+    </script>
+</body>
+</html>

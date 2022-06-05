@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>流程控制</title>
+    <link rel="icon" href="./favicon.ico" />
+    <link href="stylesheets/jquery-ui/base/jquery-ui.min.css" rel="stylesheet" />
+    <style>
+        .main-box {
+            margin: 50px auto;
+            width: 400px;
+            height: 250px;
+            padding: 50px;
+            box-shadow: 5px 5px 10px #999;
+            border: 1px solid #fff;
+            text-align: center;
+        }
+    </style>
+    <script src="javascripts/jquery-3.6.0.min.js"></script>
+    <script src="javascripts/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#tabs").tabs();
+        });        
+    </script>
+</head>
+<body>
+    <div id="tabs">
+        <ul>
+            <li><a class="class1" href="#p1" name="anchor">選擇性敘述</a></li>
+            <li><a class="class1 class2" href="#p2" name="anchor">重複性敘述</a></li>
+            <li><a class="class1 class2" href="#p3">break和continue</a></li>
+        </ul>
+        <div id="p1">
+            <div class="main-box">
+                <h3>
+                    <script>
+                        var gender = "Male";
+                        if (gender == "Male") {
+                            document.write("男性網友您好!");
+                        }
+                        document.write(`<hr/>`);
+                        
+                        if (gender == "Male") {
+                            document.write("先生您好!");
+                        }
+                        else {
+                            document.write("女士您好!");
+                        }
+                        document.write(`<hr/>`);
+
+                        var birthPlace="台北";
+                        switch (birthPlace)
+                        {
+                            case "台南":
+                                document.write("出生地:台南");
+                                break;
+                            case "台中":
+                                document.write("出生地:台中");
+                                break;
+                            case "台北":
+                                document.write("出生地:台北");
+                                break;
+                            default:
+                                document.write("出生地:N/A");
+                                break;
+                        }
+
+                    </script>                    
+                </h3>
+            </div>
+        </div>
+        <div id="p2">
+            <div class="main-box">
+                <h5>
+                    <script>
+                        var s = "";
+                        var total = 0; 
+                        for (let i = 1; i <= 10; i++) {
+                            total += i;
+                             s += `i=${i} total=${total};\t`;
+                        } 
+                        document.write(`for迴圈<br/>${s}<hr/>`);
+                        
+                        var s = "";
+                        var total = 0;
+                        var j = 1;
+                        while (j <= 10) {
+                            total += j;
+                              s += `j=${j++} total=${total};\t`;
+                        }
+                        document.write(`while迴圈<br/>${s}<hr/>`);
+
+                        var s = "";
+                        var total = 0;
+                        var k = 1;
+                        do {
+                            total += k;
+                            s += `k=${k++} total=${total};\t`;
+                        }
+                        while (k <= 10);
+                        document.write(`do while迴圈<br/>${s}<hr/>`);
+                    </script>
+                </h5>
+            </div>
+        </div>
+        <div id="p3">
+            <div class="main-box">
+                <h5>
+                    <script>
+                        var s = ""; 
+                        for (let i = 1; i <= 10; i++) {
+                            if (i > 5)
+                                break;
+                             s += `i=${i}\t`;
+                        }
+                        document.write(`break<br/>${s}<hr/>`); 
+
+                        var s = "";
+                        for (let i = 1; i <= 10; i++) {
+                            if (i == 5)
+                                continue;
+                             s += `i=${i}\t`;
+                        } 
+                        document.write(`continue<br/>${s}<hr/>`); 
+                    </script>
+                </h5>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

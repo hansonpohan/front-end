@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Homework</title>
+    <style>
+        div {
+            margin: 10px;
+            text-align: center;
+        }
+
+        .input {
+            width: 50px;
+            height: 50px;
+            margin: 50px;
+            font-size: 40px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .box {
+            margin: 30px auto;
+            background-color: aquamarine;
+            width: 700px;
+            height: 100px;
+            box-shadow: 5px 5px 10px gray;
+        }
+
+        .myfixed {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+        }
+    </style>
+
+</head>
+
+<body onload="document.forms[0].elements[0].focus();">
+    <h1 style="text-align:center;">猜數字遊戲</h1>
+    <form>
+        <div>
+            <input class="input" type="text" id="text1" maxlength="1" onkeyup="moveNext(this,0)" autocomplete="off">
+            <input class="input" type="text" id="text2" maxlength="1" onkeyup="moveNext(this,1)" autocomplete="off">
+            <input class="input" type="text" id="text3" maxlength="1" onkeyup="moveNext(this,2)" autocomplete="off">
+            <input class="input" type="text" id="text4" maxlength="1" onkeyup="moveNext(this,3)" autocomplete="off">
+            <input class="input" type="text" id="text5" maxlength="1" onkeyup="moveNext(this,4)" autocomplete="off">
+
+        </div>
+    </form>
+    <div>
+        <button onclick="answer()" style="font-size: 20px;">檢視猜測結果</button>
+    </div>
+    <div class="box" id="div2" style="font-size: 25px;">
+
+    </div>
+    <div>
+        <button onclick="vis()" style="font-size: 20px;">顯示莊家的數字</button>
+    </div>
+    <div class="box" style="font-size: 25px; visibility: hidden;" id="div1">
+    </div>
+    <div class="myfixed">
+        <button style="font-size: 20px;" onclick="clean()">重啟遊戲</button>
+
+    </div>
+    <script>
+        var str = '';
+        var arr = [];
+        for (let i = 0; i < 5; i++) {
+            str = Math.round(Math.random() * 9);
+            for (let j = 0; j < arr.length; j++) {
+                if (arr[j] == str) {
+                    arr.splice(j, 1);
+                    i--;
+                }
+            }
+            arr.push(str)
+        }
+        arr.sort();
+        document.getElementById("div1").style.visibility = "hidden";
+        document.getElementById("div1").innerHTML = "莊家的數字:" + arr;
+
+        function vis() {
+            if (document.getElementById("div1").style.visibility == "visible") {
+                document.getElementById("div1").style.visibility = "hidden";
+            } else {
+                document.getElementById("div1").style.visibility = "visible";
+            }
+        }
+
+        function answer() {
+            var arr1 = [];
+            arr1[0] = parseInt(document.getElementById("text1").value);
+            arr1[1] = parseInt(document.getElementById("text2").value);
+            arr1[2] = parseInt(document.getElementById("text3").value);
+            arr1[3] = parseInt(document.getElementById("text4").value);
+            arr1[4] = parseInt(document.getElementById("text5").value);
+            var s = arr1.join(",") + ",";
+
+            for (var i = 0; i < arr1.length; i++) {
+                if (s.replace(arr1[i] + ",", "").indexOf(arr1[i] + ",") > -1) {
+                    var re = true;
+                    alert('請輸入不重複之數字');
+                    break;
+                }
+                else {
+                    re = false;
+                }
+            }
+
+            if (re == false) {
+                var result = arr.filter(function (e) {
+                    return arr1.indexOf(e) > -1
+                })
+                document.getElementById("div2").innerHTML = "您猜對的數字有:" + result.toString() + "<br/>" + "總計" + result.length.toString() + "個";
+            }
+        }
+
+        function clean() {
+            location.reload();
+        }
+
+        function moveNext(object, index) {
+            if (object.value.length == 1) {
+                document.forms[0].elements[index + 1].focus();
+            }
+        }
+    </script>
+</body>
+
+</html>
