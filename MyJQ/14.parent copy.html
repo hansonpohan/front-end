@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>children</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-children">
+                co11
+                <span>span?</span>
+            </div>
+            <div class="col">co12
+                <span>span?</span>
+            </div>
+            <span class="box">box1</span>
+            <div class="col">co13</div>
+            <span class="box">box2</span>
+            <div class="col">co14</div>
+            <div class="col">co15</div>
+            <span class="box">box3</span>
+            <div class="col">co16</div>
+        </div>
+        <div class="row">
+            <div class="col">col1</div>
+            <span>span</span>
+            <div class="col">col1</div>
+            <div class="col">col1</div>
+            <div class="col">col1</div>
+        </div>
+        <!-- <div class="row">
+            <div class="col">co11</div>
+            <div class="col">co12</div>
+            <div class="col">co13</div>
+            <div class="col">co14</div>
+            <div class="col">co15</div>
+            <div class="col">co16</div>
+        </div> -->
+    </div>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+        // $('.col-children').parent().parent().css('background', 'red')
+        // $('.col-children').closest('.row').css('background', 'red')
+        // parents()所有複層包含html()可以加條件
+        // $('.col-children').parents('.row').css('background', 'red')
+
+        // parentsUntil('.container')不包含container
+        $('.col-children').parentsUntil('.container').css('background', 'red')
+
+    </script>
+</body>
+
+</html>

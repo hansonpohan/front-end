@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,700|Raleway&display=swap');
+
+        body {
+            font-family: 'Raleway', 'Noto Sans TC', sans-serif;
+            background: #1D976C;
+            background: -webkit-linear-gradient(to right, #93F9B9, #1D976C);
+            background: linear-gradient(to right, #93F9B9, #1D976C);
+            height: 100vh;
+            font-weight: 300;
+        }
+
+        .main {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+
+        .header {
+            color: #414141;
+            margin-top: 120px;
+            margin-bottom: 30px;
+            color: #fff;
+            letter-spacing: 5px;
+            font-weight: 300;
+            font-size: 5.5rem;
+        }
+
+        .header h2>span {
+            font-weight: 700;
+        }
+
+        .btn-addNew {
+            color: #fff;
+            font-size: 22px;
+            text-align: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: #424242;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-addNew:hover,
+        .btn-addNew:active,
+        .btn-addNew:focus {
+            color: #fff;
+            outline: none;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+        }
+
+        .btn-addNew:hover {
+            background: #009688;
+        }
+
+        .addList input {
+            height: 50px;
+            border-radius: 25px;
+        }
+
+        .addList input:focus {
+            outline: none;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            border-color: #009688;
+        }
+
+        .listTo {
+            margin-top: 30px;
+            color: #757575;
+            font-size: 18px;
+            padding: 0;
+        }
+
+        .listTo li {
+            width: 100%;
+            padding: 15px;
+            background: #fff;
+            margin: 10px auto;
+            border-radius: 12px;
+            border-bottom: 1px dashed #e3e3e4;
+            list-style: none;
+            display: inline-flex;
+            align-items: center;
+            box-shadow: 0 0 6px 3px rgba(0, 0, 0, .12);
+        }
+
+        .listTo li:last-child {
+            border-bottom: none;
+        }
+
+        .listTo li i {
+            color: #f44336;
+            margin-left: auto;
+            width: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main" id="main">
+        <div class="header">
+            <h2><span>待辦</span>事項</h2>
+        </div>
+        <!-- 新增事件 -->
+        <div class="addList">
+            <div class="col-auto p-0">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-addNew" type="button">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <input type="text" class="form-control event" placeholder="輸入待辦事項...">
+                </div>
+            </div>
+        </div>
+        <!-- 事件列表 -->
+        <ul class="listTo"></ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+    <script>
+        //-- 指定 dom
+        var listTo = document.querySelector('.listTo');   //事件列表
+        var sendData = document.querySelector('.btn-addNew');   //新增事件按鈕
+        var data = JSON.parse(localStorage.getItem('listData')) || [];   //將事件從轉JSON資料轉成陣列
+
+
+        //-- 綁定監聽事件
+        sendData.addEventListener('click', addlistTo);   //點擊新增按鈕的事件監聽
+        listTo.addEventListener('click', listDone);   //點擊刪除按鈕的事件監聽
+        updateList(data);   //更新事件
+
+
+        //-- 加入待辦事件，並同步更新網頁與 localstorage
+        function addlistTo(e) {
+            e.preventDefault();  //避免原本的動作執行
+
+            var text = document.querySelector('.event').value;  //取得輸入在input的值
+            var todo = {
+                content: text  //定義todo物件
+            };
+            data.push(todo);  //增加入待辦事件到陣列中
+            // console.log(todo);
+
+            updateList(data);  //更新網頁內容
+            localStorage.setItem('listData', JSON.stringify(data));  //將待辦事件轉化成 JSON 字串 
+            console.log(data);
+        };
+
+
+        //-- 更新網頁內容
+        function updateList(items) {
+            str = '';
+            var len = items.length;
+
+            for (var i = 0; len > i; i++) {
+                str += '<li><span>' + items[i].content + '</span><i class="fas fa-trash-alt" data-listnum=' + i + ' ></i></li>';
+            }
+            listTo.innerHTML = str;
+        };
+
+
+        //-- 刪除待辦事項
+        function listDone(e) {
+            e.preventDefault();  //避免原本的動作執行
+            console.log(e.target.nodeName);  //確認點到的元素
+            if (e.target.nodeName !== 'I') { return };  //若沒有點到刪除icon的話，則中斷function
+
+            var listnum = e.target.dataset.listnum;  //定義選到的待辦事項
+            data.splice(listnum, 1);  //刪除事項
+
+            //更新網頁內容
+            localStorage.setItem('listData', JSON.stringify(data));
+            updateList(data);
+        };
+    </script>
+</body>
+
+</html>

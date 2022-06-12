@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex1</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        /* tr.highlight {
+            background-color: lightblue;
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <table class="table-bordered">
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>
+                        Elon Musk
+                    </td>
+                    <td>
+                        0912345678
+                    </td>
+                    <td>
+                        elonmusk@gmail.com
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>
+                        Elon Musk
+                    </td>
+                    <td>
+                        0912345678
+                    </td>
+                    <td>
+                        elonmusk@gmail.com
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>
+                        Elon Musk
+                    </td>
+                    <td>
+                        0912345678
+                    </td>
+                    <td>
+                        elonmusk@gmail.com
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>
+                        Elon Musk
+                    </td>
+                    <td>
+                        0912345678
+                    </td>
+                    <td>
+                        elonmusk@gmail.com
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+        // $(':input').click(function () {
+        //     console.log('hi')
+        //     $(':checkbox').parent().parent().css('background', 'blue')
+        // });
+        //切換背景色彩不會判斷到是否勾選
+        // $(':input').click(function () {
+        //     $(this).parent().parent().toggleClass("highlight");
+        // });
+        $(':input').click(function () {
+            if ($(this).is(':checked')) {//判斷checkbox是否勾選
+                $(this).parent().parent().css('background', 'blue')//增加CSS樣式
+            } else {
+                $(this).parent().parent().css('background', 'none');//移除CSS樣式
+            }
+        });
+    </script>
+</body>
+
+</html>

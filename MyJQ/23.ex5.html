@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex5</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        .wrap {
+            width: 800px;
+            height: 400px;
+            /* 超出的隱藏 */
+            overflow: hidden;
+            position: relative;
+            /* border: 3px solid orange; */
+        }
+
+        ul.train {
+            width: 4000px;
+            display: flex;
+            height: 100%;
+            list-style: none;
+            padding: 0;
+            /* border: 3px solid green; */
+            transform: translateX(-0px);
+            transition: .5s;
+        }
+
+        .train li {
+            flex-basis: 0;
+            flex-grow: 1;
+            /* border: 3px solid red; */
+        }
+
+        .train img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-dots {
+            display: flex;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .slider-dots li {
+            width: 40px;
+            height: 10px;
+            border: 2px solid #fff;
+            margin: 0 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <ul class="train list-unstyled">
+            <li><img src="./imgs/slide1.jpg" alt=""></li>
+            <li><img src="./imgs/slide2.jpg" alt=""></li>
+            <li><img src="./imgs/slide3.jpg" alt=""></li>
+            <li><img src="./imgs/slide4.jpg" alt=""></li>
+            <li><img src="./imgs/slide5.jpg" alt=""></li>
+        </ul>
+
+        <ul class="slider-dots list-unstyled">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+        //$('.slider-dots li').hover(function () {
+        //     // console.log('hi');
+        //     $(this).css('background', '#fff')
+        //     const n = $(this).index();
+        //     $('ul.train').css('transform', `translateX(${n * -800}px)`)
+        // }, function () {
+        //     $(this).css('background', 'none')
+        // });
+        // 滑鼠移動到某個 li 身上,圖片會移動到指定數字位置。
+
+        // 1.Event 事件 Mouseenter
+        // 2.移動圖片
+        // 3.移動到指定位置(必須知道是第幾li)
+        // 4.拿到li數字,並且修改CSS,確定移動到正確位置
+        // 5.bug fix: li 白色指示點不能全白
+
+        $('.slider-dots li').mouseenter(function () {
+            // console.log('hi');
+            // 不能只考慮自己!
+            // 0-> 1,2,3,4 都要變透明
+            // 1-> 0,2,3,4 都要變透明
+            // 我自己 -> 除了我以外的兄弟姊妹都要變透明
+            $(this).css('background', '#fff').siblings().css('background', 'transparent')
+            console.log($(this).index());
+            // 必須知道變數的運用,計算出正確移動的數字
+            // index 0 -> 火車移動到 0px  n*(-800)
+            // index 1 -> 火車移動到 -800px
+            // index 2 -> 火車移動到 -1600px
+            const n = $(this).index();
+            $('ul.train').css('transform', `translateX(${n * -800}px)`)
+        })
+
+    </script>
+</body>
+
+</html>

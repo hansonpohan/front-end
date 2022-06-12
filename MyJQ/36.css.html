@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #faf;
+            transition: .5s;
+        }
+    </style>
+</head>
+
+<body>
+    <button>click</button>
+    <div class="box"></div>
+
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+        console.log('width:', $('.box').css('width'));
+        console.log('background-color:', $('.box').css('background-color'));
+        console.log('background-color:', $('.box').css('background'));
+        // console.log('background-color:', $('.box').css('background-color') == '#faf');
+        // console.log('background-color:', $('.box').css('background-color') == 'rgb(255, 170, 255)');
+
+        var styleList = {
+            styledefult: {
+                width: '200px',
+                height: '200px',
+                background: '#faf',
+            },
+            style1: {
+                width: '500px',
+                background: 'blue',
+            },
+        }
+        // OBJECT 取值: 點表示法、中括號表示法
+        // OBJECT 寫值
+        styleList.style2 = {
+            width: '500px',
+            background: 'red',
+        }
+
+        for (let i = 0; i < 3; i++) {
+            console.log('my loop', styleList['style' + i])
+        }
+        const arr = [styleList.styledefult, styleList.style1, styleList.style2]
+        console.log(arr);
+        console.log('styleList', styleList);
+
+        const myArray = ['a', 'b', 'c'];
+
+        console.log('myArray', myArray);
+        console.log('myArray', myArray[2]);
+        myArray.push('d');// push,pop,shift,unshift
+        // foreach, map ,filter ,reduce ,sort
+        console.log('myArray new:', myArray);
+
+        // var styledefult = {
+        //     width: '200px',
+        //     background: 'rgb(255, 170, 255)',
+        // };
+        // var style1 = {
+        //     width: '500px',
+        //     background: 'blue',
+        // };
+
+        // $('button').click(function () {
+        //     if ($('.box').css('background-color') == 'rgb(255, 170, 255)') {
+        //         // $('.box').css('background-color', 'blue').css('width', '500px')
+
+        //         // var style = {
+        //         //     width: '500px',
+        //         //     background: 'blue',
+        //         // };
+        //         $('.box').css(styleList.style1)
+        //     }
+        //     else {
+        //         $('.box').css('background-color', 'rgb(255, 170, 255)')
+
+        //         // var style = {
+        //         //     width: '500px',
+        //         //     background: 'blue',
+        //         // };
+        //         $('.box').css(styleList.styledefult)
+        //     }
+        // })
+
+        $('button').click(function () {
+            $('.box').css('width', '+=100')
+        })
+
+    </script>
+</body>
+
+</html>

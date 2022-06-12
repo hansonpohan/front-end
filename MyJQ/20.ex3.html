@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex3</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        .row {
+            margin-top: 10px;
+        }
+
+        .col img {
+            width: 100%;
+            border-radius: 50%;
+        }
+
+        img.border {
+            outline: 2px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col"><img src="./imgs/person1.jpg" alt=""></div>
+            <div class="col"><img src="./imgs/person2.jpg" alt=""></div>
+            <div class="col"><img src="./imgs/person3.jpg" alt=""></div>
+            <div class="col"><img src="./imgs/person4.jpg" alt=""></div>
+            <div class="col"><img src="./imgs/person5.jpg" alt=""></div>
+        </div>
+    </div>
+
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script>
+        $('img').click(function () {
+            // $(this).toggleClass("border");
+            $(this).css('border', '2px solid red').parent().siblings().children().css('border', '0px')
+        });
+
+    </script>
+</body>
+
+</html>

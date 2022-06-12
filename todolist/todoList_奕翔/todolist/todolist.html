@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoList</title>
+    <style>
+        body {
+            background-color: #D4D4D4;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            height: 50px;
+            width: 100%;
+            background-color: #525252;
+            color: white;
+            font-size: 40px;
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+
+        main {
+            margin-top: 80px;
+            margin-bottom: 80px;
+        }
+
+        .box {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .d {
+            background-color: #868686;
+            border: 3px dashed #2A272A;
+            border-radius: 18px;
+            box-shadow: 3px 3px 5px #303030;
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-bottom: 30px;
+            width: 270px;
+        }
+
+        h1 {
+            font-size: 45px;
+            margin: 10px;
+            color: white;
+        }
+
+        .d1 {
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        input {
+            height: 30px;
+            width: 70%;
+            font-size: 20px;
+        }
+
+        button {
+            width: 25%;
+            height: 35px;
+            font-size: 18px;
+        }
+
+        .d2 {
+            margin: 5px;
+        }
+
+        li {
+            list-style-type: none;
+            list-style-image: url(images/check.png);
+            font-size: 30px;
+            line-height: 1.5;
+            margin-left: 10px;
+            color: white;
+        }
+
+        footer {
+            height: 50px;
+            width: 100%;
+            background-color: #525252;
+            color: white;
+            font-size: 40px;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>ToDoList</header>
+    <main>
+        <div class="box">
+            <div class="d">
+                <div class="d1">
+                    <h1>1翔</h1>
+                    <input type="text" id="t1">
+                    <button onclick="join1()">加入</button>
+                </div>
+                <div class="d2" id="div1">
+
+                </div>
+            </div>
+            <div class="d">
+                <div class="d1">
+                    <h1>柏翰</h1>
+                    <input type="text" id="t2">
+                    <button onclick="join2()">加入</button>
+                </div>
+                <div class="d2" id="div2">
+
+                </div>
+            </div>
+            <div class="d">
+                <div class="d1">
+                    <h1>文彬</h1>
+                    <input type="text" id="t3">
+                    <button onclick="join3()">加入</button>
+                </div>
+                <div class="d2" id="div3">
+
+                </div>
+            </div>
+            <div class="d">
+                <div class="d1">
+                    <h1>+慶</h1>
+                    <input type="text" id="t4">
+                    <button onclick="join4()">加入</button>
+                </div>
+                <div class="d2" id="div4">
+
+                </div>
+            </div>
+            <div class="d">
+                <div class="d1">
+                    <h1>采庭</h1>
+                    <input type="text" id="t5">
+                    <button onclick="join5()">加入</button>
+                </div>
+                <div class="d2" id="div5">
+
+                </div>
+            </div>
+            <div class="d">
+                <div class="d1">
+                    <h1>美0</h1>
+                    <input type="text" id="t6">
+                    <button onclick="join6()">加入</button>
+                </div>
+                <div class="d2" id="div6">
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>footer</footer>
+    <script>
+        myhtml1 = '';
+        myhtml2 = '';
+        myhtml3 = '';
+        myhtml4 = '';
+        myhtml5 = '';
+        myhtml6 = '';
+        function join1() {
+            var t1 = document.getElementById('t1');
+            if (t1.value == '') {
+                alert('請輸入內容');
+            } else {
+                myhtml1 = myhtml1 + `<div class="d2"><li>${t1.value}</li></div>`
+                div1.innerHTML = myhtml1;
+                t1.value = '';
+            }
+        }
+        function join2() {
+            if (t1.value == '') {
+                alert('請輸入內容');
+            } else {
+                var t2 = document.getElementById('t2');
+                myhtml2 = myhtml2 + `<div class="d2"><li>${t2.value}</li></div>`
+                div2.innerHTML = myhtml2;
+                t2.value = '';
+            }
+        }
+        function join3() {
+            if (t1.value == '') {
+                alert('請輸入內容');
+            } else {
+                var t3 = document.getElementById('t3');
+                myhtml3 = myhtml3 + `<div class="d2"><li>${t3.value}</li></div>`
+                div3.innerHTML = myhtml3;
+                t3.value = '';
+            }
+        }
+        function join4() {
+            if (t1.value == '') {
+                alert('請輸入內容');
+            } else {
+                var t4 = document.getElementById('t4');
+                myhtml4 = myhtml4 + `<div class="d2"><li>${t4.value}</li></div>`
+                div4.innerHTML = myhtml4;
+                t4.value = '';
+            }
+        }
+        function join5() {
+            if (t1.value == '') {
+                alert('請輸入內容');
+            } else {
+                var t5 = document.getElementById('t5');
+                myhtml5 = myhtml5 + `<div class="d2"><li>${t5.value}</li></div>`
+                div5.innerHTML = myhtml5;
+                t5.value = '';
+            }
+        }
+        function join6() {
+            if (t1.value == '') {
+                alert('請輸入內容');
+            } else {
+                var t6 = document.getElementById('t6');
+                myhtml6 = myhtml6 + `<div class="d2"><li>${t6.value}</li></div>`
+                div6.innerHTML = myhtml6;
+                t6.value = '';
+            }
+        }
+    </script>
+</body>
+
+</html>

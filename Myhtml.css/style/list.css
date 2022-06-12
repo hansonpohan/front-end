@@ -1,0 +1,23 @@
+.list1 {
+    list-style-type: circle;
+    border: 3px dotted orange;
+     /* border-radius: 5px 10px 15px 20px;左上釉上右下左下
+     border-top-left-radius: 20px;
+     border-bottom-right-radius: 20px; */
+     border-radius:20px 0 20px 0;
+}
+
+.list2 {
+    list-style-type: none;
+    list-style-image: url(../images/1.png);/* ../返回上一層 */
+}
+
+.in {
+    background-color: orange;
+    list-style-position: inside;
+}
+
+.out {
+    background-color: orange;
+    list-style-position: outside;
+}

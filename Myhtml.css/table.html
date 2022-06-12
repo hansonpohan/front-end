@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+    <style>
+        .tb1 {
+            width: 400px;
+            border: 3px solid blue;
+            /* border-collapse: collapse; */
+            border-radius: 20px;
+            border-spacing: 0px;
+        }
+
+        td {
+            border: 1px solid black;
+        }
+
+        td,
+        th {
+            border: 1px solid black;
+        }
+
+        thead {
+            background-color: cornflowerblue;
+            color: aliceblue;
+            text-transform: capitalize;
+        }
+
+        tbody {
+            background-color: aqua;
+            text-align: center;
+        }
+
+        tbody tr:nth-child(n) {
+            /* :link :nth-child(n) 偽元素 */
+            background-color: blueviolet;
+        }
+
+        tbody tr:nth-child(2n+1) {
+            background-color: aqua;
+        }
+        tbody td:hover{
+            background-color: cornflowerblue;
+            color: red;
+        }
+        tr:first-child th:first-child{
+            border-top-left-radius: 17px;
+        }
+        tr:first-child th:last-child{
+            border-top-right-radius: 17px;
+        }
+        tr:last-child td:first-child{
+            border-bottom-left-radius: 17px;
+        }
+        tr:last-child td:last-child{
+            border-bottom-right-radius: 17px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h2>div裡的文字垂直對齊</h2>
+    <div style="width:120px;height:100px;border:1px solid red;line-height:100px;">高度有指定</div>
+    <hr>
+    <div style="width:120px;border:1px solid green;padding-top:50px;padding-bottom:50px;">高度不指定</div>
+    <hr>
+    <table class="tb1">
+        <thead>
+        <tr>
+            <th>第一行</th>
+            <th>第二行</th>
+            <th>第三行</th>
+            <th>第四行</th>
+        </tr>
+        <tr>
+            <th colspan="2">第一行</th>
+            <!-- <th>第二行</th> -->
+            <th colspan="2">第三行</th>
+            <!-- <th>第四行</th> -->
+        </tr>
+    </thead>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td colspan="3">10</td>
+            <!-- <td>11</td> -->
+            <!-- <td>12</td> -->
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>14</td>
+            <td>15</td>
+            <td>16</td>
+        </tr>
+        <tr>
+            <td>17</td>
+            <td>18</td>
+            <td rowspan="3">19</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>21</td>
+            <td>22</td>
+            <!-- <td>23</td> -->
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>25</td>
+            <td>26</td>
+            <!-- <td>27</td> -->
+            <td>28</td>
+        </tr>
+    </table>
+
+</body>
+
+</html>

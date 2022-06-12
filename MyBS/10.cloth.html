@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .col {
+            height: 100px;
+            /* outline: 1px solid red; */
+        }
+
+        .link-underline {
+            text-decoration: underline;
+        }
+
+        .row {
+            background-color: aquamarine;
+            margin: 10px;
+        }
+
+        .col-3 {
+            /* height: 300px; */
+            outline: 1px solid red;
+
+        }
+
+        .border-right-2 {
+            border-right: 2px solid gray;
+        }
+
+        /* .img-wrap {
+            height: 100%;
+        } */
+
+
+        .img-wrap img {
+            /* 用百分比可以隨著縮放的大小 */
+            width: 100%;
+            /* aspect-ratio 寬高比 */
+            aspect-ratio: 3/4;
+            /* 維持等比例 */
+            object-fit: cover;
+            /* object-position圖片置中 */
+            object-position: 50% 50%;
+            overflow: hidden;
+        }
+
+        img:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <div class="row p-3 mb-5">
+                <div class="col">
+                    <ul class="list-unstyled d-flex align-items-center h-100 justify-content-center">
+                        <li class="mx-2"><a class="page-links text-dark link-underlie " href="#">link1</a></li>
+                        <li class="mx-2"><a class="page-links text-dark" href="#">link2</a></li>
+                        <li class="mx-2"><a class="page-links text-dark" href="#">link3</a></li>
+                        <li class="mx-2"><a class="page-links text-dark" href="#">link4</a></li>
+                    </ul>
+                </div>
+                <div class="col d-flex justify-content-center align-items-center py-3">
+                    <h1 class="h4">Alameda</h1>
+                </div>
+                <div class="col d-flex justify-content-end align-items-center py-3">
+                    <div>
+                        <i class="mx-2 fa-brands fa-instagram"></i>
+                        <i class="mx-2 fa-brands fa-twitter"></i>
+                        <i class="mx-2 fa-solid fa-cart-shopping"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <ul class="list-unstyled d-flex align-items-center justify-content-center h-100">
+                        <!-- 有border p跟m有差 -->
+                        <li class="px-2 border-right-2"><a class="page-links text-dark" href="#">top</a></li>
+                        <li class="px-2 border-right-2"><a class="page-links text-dark" href="#">bottoms</a></li>
+                        <li class="px-2"><a class="page-links text-dark" href="#">sale</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+
+    <script>
+        // 選取全部的 .page-links
+        const pageLinks = document.querySelectorAll('.page-links');
+        //針對全部的 pageLinks 跑迴圈
+        pageLinks.forEach(element => {
+            //每一個link都加上事件
+            element.addEventListener('click', function (e) {
+                //測試監聽器是否正常運作
+                // e.preventDefault();
+                // console.log('hi');
+
+                //全部的a連結去除底線
+                pageLinks.forEach(element => {
+                    element.classList.remove('link-underline');
+                });
+
+                this.classList.add('link-underline');
+            });
+        });
+    </script>
+    <div class="container">
+        <div id="product" class="row">
+            <div class="col-3">
+                <div class="img-wrap">
+                    <!-- <a href="https://google.com"></a> -->
+                    <img src="https://images.squarespace-cdn.com/content/v1/5d02d798cc25920001b61816/1562770837698-FMNKJ1A4GRW0EYTHCPDD/ulihu-charcoal-silk-linen-tunic_0326-v1-FINAL-copy.jpg?format=750w"
+                        alt="">
+                    <h5>1231212</h5>
+                    <p>123</p>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="img-wrap">
+                    <img src="https://images.squarespace-cdn.com/content/v1/5d02d798cc25920001b61816/1562797313348-RV3I7WY2DOYUQ3ZLZA61/ulihu-blue-linen-tunic_0308-v1-FINAL-copy.jpg?format=750w"
+                        alt="">
+                    <h5>1231212</h5>
+                    <p>456</p>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="img-wrap">
+                    <img src="https://images.squarespace-cdn.com/content/v1/5d02d798cc25920001b61816/1560522174782-G9Z1KCIOM3D9FXP19G8W/lauren-winter-natural-dress_0172-v1-FINAL-copy.jpg?format=750w"
+                        alt="">
+                    <h5>1231212</h5>
+                    <p>789</p>
+                </div>
+            </div>
+
+            <div class="col-3">
+                <div class="img-wrap">
+                    <img src="https://images.squarespace-cdn.com/content/v1/5d02d798cc25920001b61816/1560521851099-Y8NGHHO3QX5EVA0JBN9T/lauren-winter-sonia-skirt-grey_0270-v1-FINAL-copy.jpg?format=750w"
+                        alt="">
+                    <h5>1231212</h5>
+                    <p>1235465</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+    <script>
+        // AJAX 去後端取的資料庫的產品
+
+        const productDiv = document.querySelector(`#product`);
+        let myhtml = '';
+
+        for (let i = 0; i < 15; i++) {
+            myhtml += `<div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="img-wrap">
+                <img src="./Alameda-imgs/pic_${i}.jpg" alt="">
+                    <h3>Lounge Tunic/Black</h3>
+                    <p>$50.00</p>
+                </div>
+            </div>`
+        }
+
+        productDiv.innerHTML = myhtml;
+    </script>
+</body>
+
+</html>
